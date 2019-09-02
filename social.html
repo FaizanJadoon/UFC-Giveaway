@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src='http://connect.facebook.net/en_US/all.js'></script>
+   <script>
+
+  
+//Facebook
+window.fbAsyncInit = function() {
+  FB.init({
+    appId            : '536731433802475',
+    autoLogAppEvents : true,
+    xfbml            : true,
+    version          : 'v4.0'
+  });
+};
+
+function fb(){
+FB.ui({
+     method: 'share',
+     href: 'http://fahadassociate.com/offer.html',
+    // method: 'feed',
+    // caption: 'Avail a chance to watch live FREE UFC fight on Sun, Dec 8, 2019 at Capital One Arena, Washington DC United States',
+    // link: 'http://fabuloustyles.org/offer.html'
+  }, function(response){
+      if (response && !response.error_message) {
+          console.log("ssg completed");
+
+      }
+  });  
+}
+       
+  
+
+//Pinterest
+
+window.pAsyncInit = function() {
+    PDK.init({
+        appId: "5052030818889811745", // Change this
+        cookie: true
+    });
+};
+
+(function(d, s, id){
+
+    var js, pjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) 
+      {return;}
+    js = d.createElement(s);
+     js.id = id;
+    js.src = "//assets.pinterest.com/sdk/sdk.js";
+    pjs.parentNode.insertBefore(js, pjs);
+}(document, 'script', 'pinterest-jssdk'));
+
+
+
+function pinit(){
+
+  var pinUrl = 'http://pinterest.com/pin/create/button/?url='+"https://www.belightsoft.com/products/imagetricks/img/intro-video-poster@2x.jpg";
+   var x = screen.width/2 - 700/2;
+    var y = screen.height/2 - 450/2;
+    var child = window.open(pinUrl, "popupWindow", "width=600, height=400,left="+x+",top="+y);
+
+      var timer = setInterval(checkChild, 1000);
+      var counter=0;
+
+      function checkChild() {
+
+        counter++;
+        console.log(counter);
+
+        if(child.closed && counter<10){
+          alert('Error');
+          clearInterval(timer);
+          
+        }
+
+        else if (!child.closed && counter>10){
+          alert('Success');
+          clearInterval(timer);
+        }
+     
+      }
+}
+
+
+//Twitter
+window.twttr = (function (d,s,id) {
+    var t, js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return; js=d.createElement(s); js.id=id;
+    js.src="//platform.twitter.com/widgets.js"; fjs.parentNode.insertBefore(js, fjs);
+    return window.twttr || (t = { _e: [], ready: function(f){ t._e.push(f) } });
+    }(document, "script", "twitter-wjs"));
+
+$(document).on('click','.twitter',function(){
+
+	var doc;
+	var abc ="google.com"
+	var tweetUrl = 'https://twitter.com/intent/tweet?text=Hello%20world&url=https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview.html';
+	var x = screen.width/2 - 700/2;
+    var y = screen.height/2 - 450/2;
+    var strWindowFeatures = "menubar=yes";
+    var child = window.open(tweetUrl, "CNN_WindowName", "width=600, height=400,left="+x+",top="+y);
+	
+      var timer = setInterval(checkChild, 1000);
+      // document.domain = 'https://www.tumarms.com';     //Replace it with your domain
+
+      var counter=0;
+
+      function checkChild() {
+
+        counter++;
+        console.log(counter);
+
+        if(child.closed && counter<10){
+          alert('Error');
+          clearInterval(timer);
+          
+        }
+
+        else if (!child.closed && counter>10){
+          alert('Success');
+          clearInterval(timer);
+        }
+     
+      }
+});
+
+
+
+  </script>
+
+  </head>
+  <body>
+
+<a onclick="fb()" id="facebook">Facebook</a>
+<br>
+<a class="twitter" href="javascript:void(0)" id="tweet">Tweet</a> 
+<br>
+<a style="cursor:pointer;" onclick="pinit()">Pinterest</a>
+
+</body>
+</html>
